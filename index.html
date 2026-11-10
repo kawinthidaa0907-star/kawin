@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAMEVERSE | โลกแห่งเกม</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b18;
+    color: white;
+}
+
+/* HEADER */
+header {
+    min-height: 420px;
+    padding: 25px 8%;
+    background:
+        radial-gradient(circle at 80% 20%, #5421a5, transparent 40%),
+        linear-gradient(135deg, #11112b, #211044, #101020);
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #c5a3ff;
+    font-size: 25px;
+}
+
+.nav-text {
+    color: #b7a4d9;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.hero {
+    padding: 85px 10px 50px;
+}
+
+.tagline {
+    color: #c49aff;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    color: #c5bfd8;
+    line-height: 1.8;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 30px;
+    background: linear-gradient(90deg, #854cff, #bb65ff);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 25px #a34cff88;
+}
+
+/* MAIN */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 25px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title small {
+    color: #a77aff;
+    letter-spacing: 3px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    margin: 10px;
+}
+
+.section-title p {
+    color: #aaa4bb;
+}
+
+/* FILTER */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    border: 1px solid #55406e;
+    background: #191529;
+    color: #d6c8ed;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background: #7844c9;
+    color: white;
+    transform: translateY(-3px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(90deg, #7844e8, #b35be9);
+    color: white;
+    border-color: transparent;
+}
+
+/* GALLERY */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.game-card {
+    background: #171526;
+    border: 1px solid #302641;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.35s;
+}
+
+.game-card:hover {
+    transform: translateY(-10px);
+    border-color: #a46aff;
+    box-shadow: 0 10px 30px #8144d633;
+}
+
+.game-card.hide {
+    display: none;
+}
+
+.image-box {
+    height: 190px;
+    position: relative;
+    overflow: hidden;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.game-card:hover img {
+    transform: scale(1.1);
+}
+
+.category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.action {
+    background: #e34e67;
+}
+
+.adventure {
+    background: #299b78;
+}
+
+.horror {
+    background: #7545b9;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #aaa4bb;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 70px;
+}
+
+.game-type {
+    display: inline-block;
+    margin-top: 15px;
+    color: #c59bff;
+    font-size: 12px;
+}
+
+.result-count {
+    text-align: center;
+    color: #aaa4bb;
+    margin-top: 30px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #12101f;
+    border-top: 1px solid #302641;
+}
+
+footer h2 {
+    color: #c5a3ff;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #aaa4bb;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .game-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 20px 5%;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .nav-text {
+        font-size: 9px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title h2 {
+        font-size: 25px;
+    }
+
+    .filter-btn {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <nav>
+        <h2 class="logo">🎮 GAMEVERSE</h2>
+        <span class="nav-text">MY GAME COLLECTION</span>
+    </nav>
+
+    <div class="hero">
+        <p class="tagline">WELCOME TO MY WORLD</p>
+        <h1>โลกแห่งเกมที่คุณชื่นชอบ</h1>
+        <p>
+            รวมเกมสุดโปรดจากหลากหลายแนว
+            ค้นหาเกมที่ใช่และเลือกชมเกมที่คุณสนใจได้เลย
+        </p>
+        <a href="#gallery" class="hero-btn">สำรวจเกมเลย ↓</a>
+    </div>
+</header>
+
+<!-- GALLERY -->
+<main class="container" id="gallery">
+
+    <div class="section-title">
+        <small>EXPLORE COLLECTION</small>
+        <h2>เกมทั้งหมดของเรา</h2>
+        <p>เลือกหมวดหมู่เกมที่คุณต้องการรับชม</p>
+    </div>
+
+    <!-- FILTER BUTTONS -->
+    <div class="filter-buttons">
+
+        <button class="filter-btn active" data-filter="all">
+            ทั้งหมด
+        </button>
+
+        <button class="filter-btn" data-filter="action">
+            ⚔️ Action
+        </button>
+
+        <button class="filter-btn" data-filter="adventure">
+            🏕️ Adventure
+        </button>
+
+        <button class="filter-btn" data-filter="horror">
+            👻 Horror
+        </button>
+
+    </div>
+
+    <!-- GAME CARDS -->
+    <div class="game-grid">
+
+        <div class="game-card" data-category="action">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e" alt="เกม Valorant">
+                <span class="category action">ACTION</span>
+            </div>
+            <div class="card-content">
+                <h3>Valorant</h3>
+                <p>เกมยิงต่อสู้แบบทีม ใช้ทักษะและการวางแผนเพื่อเอาชนะคู่แข่ง</p>
+                <span class="game-type">⚔️ Action Game</span>
+            </div>
+        </div>
+
+        <div class="game-card" data-category="action">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420" alt="เกม Battle Arena">
+                <span class="category action">ACTION</span>
+            </div>
+            <div class="card-content">
+                <h3>Battle Arena</h3>
+                <p>เกมต่อสู้สุดตื่นเต้น ท้าทายความสามารถและการตัดสินใจ</p>
+                <span class="game-type">⚔️ Action Game</span>
+            </div>
+        </div>
+
+        <div class="game-card" data-category="adventure">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23" alt="เกม Fantasy World">
+                <span class="category adventure">ADVENTURE</span>
+            </div>
+            <div class="card-content">
+                <h3>Fantasy World</h3>
+                <p>ออกเดินทางสำรวจโลกแฟนตาซี ค้นพบสถานที่และเรื่องราวใหม่ ๆ</p>
+                <span class="game-type">🏕️ Adventure Game</span>
+            </div>
+        </div>
+
+        <div class="game-card" data-category="adventure">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8" alt="เกม Forest Explorer">
+                <span class="category adventure">ADVENTURE</span>
+            </div>
+            <div class="card-content">
+                <h3>Forest Explorer</h3>
+                <p>ผจญภัยในป่าลึกลับ สำรวจธรรมชาติและค้นหาสิ่งที่ซ่อนอยู่</p>
+                <span class="game-type">🏕️ Adventure Game</span>
+            </div>
+        </div>
+
+        <div class="game-card" data-category="horror">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1509248961158-e54f6934749c" alt="เกม Dark Mystery">
+                <span class="category horror">HORROR</span>
+            </div>
+            <div class="card-content">
+                <h3>Dark Mystery</h3>
+                <p>เกมสยองขวัญที่เต็มไปด้วยปริศนาและบรรยากาศชวนลุ้น</p>
+                <span class="game-type">👻 Horror Game</span>
+            </div>
+        </div>
+
+        <div class="game-card" data-category="horror">
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1518709594023-6eab9bab7b23" alt="เกม Night Escape">
+                <span class="category horror">HORROR</span>
+            </div>
+            <div class="card-content">
+                <h3>Night Escape</h3>
+                <p>เอาชีวิตรอดจากสถานที่ลึกลับ พร้อมไขปริศนาเพื่อหาทางออก</p>
+                <span class="game-type">👻 Horror Game</span>
+            </div>
+        </div>
+
+    </div>
+
+    <p class="result-count" id="resultCount">
+        แสดงเกมทั้งหมด 6 รายการ
+    </p>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <h2>🎮 GAMEVERSE</h2>
+    <p>เว็บไซต์รวบรวมเกมที่น่าสนใจ</p>
+    <p>© 2026 GAMEVERSE | Created for School Project</p>
+</footer>
+
+<!-- JAVASCRIPT FILTER -->
+<script>
+
+const filterButtons = document.querySelectorAll(".filter-btn");
+const gameCards = document.querySelectorAll(".game-card");
+const resultCount = document.getElementById("resultCount");
+
+filterButtons.forEach(button => {
+
+    button.addEventListener("click", function() {
+
+        const selectedCategory = this.dataset.filter;
+
+        // เปลี่ยนสีปุ่มที่เลือก
+        filterButtons.forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+
+        let count = 0;
+
+        // กรองหมวดหมู่เกม
+        gameCards.forEach(card => {
+
+            const cardCategory = card.dataset.category;
+
+            if (
+                selectedCategory === "all" ||
+                selectedCategory === cardCategory
+            ) {
+                card.classList.remove("hide");
+                count++;
+            } else {
+                card.classList.add("hide");
+            }
+
+        });
+
+        // แสดงจำนวนเกม
+        resultCount.textContent =
+            `แสดงเกมทั้งหมด ${count} รายการ`;
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
